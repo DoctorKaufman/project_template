@@ -17,6 +17,17 @@ class TestWriteToFile(unittest.TestCase):
 
         os.remove("test_output.txt")
 
+    def test_write_empty_text(self):
+        write_to_file("", "empty_output.txt")
+
+        self.assertTrue(os.path.exists("empty_output.txt"))
+
+        with open("empty_output.txt", "r") as f:
+            written_text = f.read()
+            self.assertEqual(written_text, "")
+
+        os.remove("empty_output.txt")
+
 
 if __name__ == '__main__':
     unittest.main()

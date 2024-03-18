@@ -33,5 +33,22 @@ class TestWriteToFile(unittest.TestCase):
             write_to_file("test", "/no_such_directory/test_output.txt")
 
 
+class TestWriteDataFrameToCSV(unittest.TestCase):
+    def test_write_csv(self):
+        data = {'Name': ['Andrii', 'Anna', 'Charlie'],
+                'Age': [23, 18, 35],
+                'City': ['Kyiv', 'Lviv', 'Chicago']}
+        df = pd.DataFrame(data)
+
+        write_dataframe_to_csv(df, "test_data_output.csv")
+
+        self.assertTrue(os.path.exists("test_data_output.csv"))
+
+        read_df = pd.read_csv("test_data_output.csv")
+        self.assertTrue(df.equals(read_df))
+
+        os.remove("test_data_output.csv")
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -22,6 +22,13 @@ class TestInputFunctions(unittest.TestCase):
         text = my_input.read_text_from_file(filename)
         self.assertEqual(text, "")
 
+    def test_read_text_from_file_with_pandas(self):
+        filename = "../test_data/test_input.csv"
+        with open(filename, "w") as file:
+            file.write("Name,Age\nJohn,25\nAnna, 18\nLight, 23")
+        text = my_input.read_text_from_file_with_pandas(filename)
+        self.assertTrue(text)
+
 
 if __name__ == "__main__":
     unittest.main()

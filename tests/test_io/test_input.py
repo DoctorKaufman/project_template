@@ -34,6 +34,9 @@ class TestInputFunctions(unittest.TestCase):
         with self.assertRaises(pd.errors.EmptyDataError):
             my_input.read_text_from_file_with_pandas(filename)
 
+    def test_read_nonexistent_csv(self):
+        with self.assertRaises(FileNotFoundError):
+            my_input.read_text_from_file_with_pandas("not_exists.csv")
 
 
 if __name__ == "__main__":

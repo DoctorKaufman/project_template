@@ -49,6 +49,18 @@ class TestWriteDataFrameToCSV(unittest.TestCase):
 
         os.remove("test_data_output.csv")
 
+    def test_write_empty_dataframe(self):
+        empty_df = pd.DataFrame()
+
+        write_dataframe_to_csv(empty_df, "empty_data_output.csv")
+
+        self.assertTrue(os.path.exists("empty_data_output.csv"))
+
+        # read_df = pd.read_csv("empty_data_output.csv")
+        self.assertTrue(os.path.getsize("empty_data_output.csv"), 0)
+
+        os.remove("empty_data_output.csv")
+
 
 if __name__ == '__main__':
     unittest.main()

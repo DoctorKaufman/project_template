@@ -5,6 +5,7 @@ from app.io.output import write_to_file, write_dataframe_to_csv
 
 
 class TestWriteToFile(unittest.TestCase):
+
     def test_write_text(self):
         test_text = "This text must be written in file with no modifications."
         write_to_file(test_text, "test_output.txt")
@@ -30,10 +31,11 @@ class TestWriteToFile(unittest.TestCase):
 
     def test_write_to_not_existing_directory(self):
         with self.assertRaises(OSError):
-            write_to_file("test", "/no_such_directory/test_output.txt")
+            write_to_file("test", "../../no_such_directory/test_output.txt")
 
 
 class TestWriteDataFrameToCSV(unittest.TestCase):
+
     def test_write_csv(self):
         data = {'Name': ['Andrii', 'Anna', 'Charlie'],
                 'Age': [23, 18, 35],
@@ -61,13 +63,13 @@ class TestWriteDataFrameToCSV(unittest.TestCase):
 
         os.remove("empty_data_output.csv")
 
-    def test_write_to_non_existing_directory(self):
+    def test_write_to_not_existent_directory(self):
         data = {'Name': ['Andrii', 'Anna', 'Charlie'],
                 'Age': [23, 18, 35],
                 'City': ['Kyiv', 'Lviv', 'Chicago']}
         df = pd.DataFrame(data)
         with self.assertRaises(OSError):
-            write_dataframe_to_csv(df, "/not_real_dir/test_data_output.csv")
+            write_dataframe_to_csv(df, "../../not_real_dir/test_data_output.csv")
 
 
 if __name__ == '__main__':

@@ -16,7 +16,9 @@ def main():
     my_output.output_text_to_console(text_from_pandas)
 
     # Write text to file
-    my_output.write_to_file(text_from_file, "data/output.txt")
+    my_output.write_to_file(text_from_console, "data/output_console.txt")
+    my_output.write_to_file(text_from_file, "data/output_file.txt")
+    my_output.write_to_file(text_from_pandas, "data/output_csv.txt")
 
     # Create dict
     data = {'Name': ['Andrii', 'Anna', 'Charlie'],

@@ -40,7 +40,7 @@ def write_dict_to_csv(data, file_path):
     Write dictionary to a CSV file.
 
     Args:
-        data (dict): Dictionary containing the data.
+        data (dict): Dictionary containing the data to write.
         file_path (str): Path to the CSV file.
     """
     df = pd.DataFrame.from_dict(data)

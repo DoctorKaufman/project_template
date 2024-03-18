@@ -28,6 +28,10 @@ class TestWriteToFile(unittest.TestCase):
 
         os.remove("empty_output.txt")
 
+    def test_write_to_not_existing_directory(self):
+        with self.assertRaises(OSError):
+            write_to_file("test", "/no_such_directory/test_output.txt")
+
 
 if __name__ == '__main__':
     unittest.main()

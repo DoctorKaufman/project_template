@@ -61,6 +61,14 @@ class TestWriteDataFrameToCSV(unittest.TestCase):
 
         os.remove("empty_data_output.csv")
 
+    def test_write_to_non_existing_directory(self):
+        data = {'Name': ['Andrii', 'Anna', 'Charlie'],
+                'Age': [23, 18, 35],
+                'City': ['Kyiv', 'Lviv', 'Chicago']}
+        df = pd.DataFrame(data)
+        with self.assertRaises(OSError):
+            write_dataframe_to_csv(df, "/not_real_dir/test_data_output.csv")
+
 
 if __name__ == '__main__':
     unittest.main()

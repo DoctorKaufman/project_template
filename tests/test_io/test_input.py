@@ -29,6 +29,12 @@ class TestInputFunctions(unittest.TestCase):
         text = my_input.read_text_from_file_with_pandas(filename)
         self.assertTrue(text)
 
+    def test_read_text_from_file_with_pandas_empty_file(self):
+        filename = "empty_file.csv"
+        with self.assertRaises(pd.errors.EmptyDataError):
+            my_input.read_text_from_file_with_pandas(filename)
+
+
 
 if __name__ == "__main__":
     unittest.main()

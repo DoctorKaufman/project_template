@@ -16,6 +16,12 @@ class TestInputFunctions(unittest.TestCase):
         actual_text = my_input.read_text_from_file(filename)
         self.assertEqual(actual_text, expected_text)
 
+    def test_read_text_from_file_empty_file(self):
+        filename = "../test_data/empty_file.txt"
+        open(filename, "w").close()
+        text = my_input.read_text_from_file(filename)
+        self.assertEqual(text, "")
+
 
 if __name__ == "__main__":
     unittest.main()
